@@ -1,0 +1,312 @@
+
+  
+import java.util.*;
+//1)
+/*
+class Gret
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		String a = sc.nextLine();
+		System.out.println(a);
+	}
+}*/
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//2)
+/*
+class Gret
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		System.out.println(a);
+	}
+}*/
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//3)
+class Gret
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int x =sc.nextInt();
+		double y = (x*x) + (3*x) - 7;
+		System.out.println("y= "+y);
+		y = x++ + ++x ;
+		System.out.println("y= "+y+" x="+x);
+		boolean a=true;
+		boolean b=false;
+		 boolean c = a && b || !(a || b);
+		System.out.println("a= "+a+" b= "+b+" c= "+c);  
+	}
+}*/
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//4)
+class Javaassg1
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		byte a =sc.nextByte();
+		byte b =sc.nextByte();
+		byte c = (byte)(a+b);
+		System.out.println(c);
+	}
+}*/
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//5)
+class Gret
+{
+	public static void main(String args[])
+	{
+	String s1 = args[0];
+	System.out.println("Welcome "+s1);
+	}
+}*/
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//Q6
+/*
+class Gret
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the radious of circle");
+		int r = sc.nextInt();
+		double area = 3.14*r;
+		System.out.println(area);
+		double circ = 3.14*2*r;
+		System.out.println(circ);
+	}
+}*/
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//7)
+class Gret
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the marks out of 100");
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		int c = sc.nextInt();
+		int d = sc.nextInt();
+		int e = sc.nextInt();
+		System.out.println("add= "+(a+b+c+d+e));
+		double per = ((a+b+c+d+e)*100)/500;
+		System.out.println("percentage marks = "+per+"%");
+	}
+}*/
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+/*
+//8)
+class Gret
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int prin = sc.nextInt();
+		int year = sc.nextInt();
+		int rate = sc.nextInt();
+		double si = prin*year*rate/100;
+		System.out.println(si);
+	}
+}*/
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//9)
+
+class Gret
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		int q = num/365;
+		int rem = num%365;
+		System.out.println("years= "+q);
+		int month = rem/12;
+		System.out.println("month= "+month);
+		int rem2 = rem%12;
+		int week = rem2/7;
+		System.out.println("weeks= "+week);
+		int day = rem2%7;
+		System.out.println("days= "+day);
+	}
+}*/
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//10)
+//import java.lang.*;
+class Gret
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		double f =sc.nextDouble();
+		double cels = 5*(f-32)/9;
+		System.out.printf(cels); 
+	}
+}*/
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//11)
+class Gret
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int num1 = sc.nextInt();
+		int num2 = sc.nextInt();
+		System.out.println("num1= "+num1+" num2= "+num2);
+		int c = num1 + num2;
+		int num3 = c-num1;
+		int num4 = c-num2;
+		System.out.println("num3= "+num3+" num4= "+num4);
+		
+	}
+}*/
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//12)
+class Gret
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int da,hra,gs;
+		System.out.println("Enter your salary");
+		int sal = sc.nextInt();
+		if(sal<10000)
+		{
+			 da = (sal*90)/100;
+			 hra = (sal*10)/100;
+		}
+		else
+		{
+			  hra = 2000;
+			   da = (sal*98)/100;
+		}
+		 gs = sal+da+hra;
+		System.out.println("gs= "+gs);
+	}
+}*/
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//13)
+class Gret
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int num1 = sc.nextInt();
+		int num2 = sc.nextInt();
+		int num3 = sc.nextInt();
+		if(num1>num2 && num1>num3)
+		{
+			System.out.println("num1= "+num1+"is greater");
+		}
+		else
+		{
+			if(num2>num3 && num2>num1)
+			{
+				System.out.println("num2= "+num2+"is greater");
+			}
+			else{
+				System.out.println("num3= "+num3+"is greater");
+			}
+		}
+	}
+}*/
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//14)
+class Gret
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int year = sc.nextInt();
+		if(year%4 ==0)
+		{
+			if(year%100 ==0)
+			{
+				if(year%400==0)
+				{
+					System.out.println(year+" is leap year");
+				}
+				else
+				{
+					System.out.println(year+" is not leap year");
+				}
+			}
+			else
+			{
+				System.out.println(year+" isleap year");
+			}
+		}
+		else
+		{
+			System.out.println(year+" is not leap year");
+		}
+	}
+}*/
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//15)
+/*
+class Gret
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		String s = sc.next();
+		int age = sc.nextInt();
+		if(s.equals("m"))
+		{
+			if(age>=23 && age<=80)
+			{
+				System.out.println("Person is eligible for marriage");
+			}
+			else
+			{
+				System.out.println("Person is not eligible for marriage");
+			}
+		}
+		else{
+			if(s.equals("f"))
+			{
+				if(age>=21 && age<=80)
+				{
+					System.out.println("Person is eligible for marriage");
+				}
+				else{
+					System.out.println("Person is not eligible for marriage");
+				}
+			}
+		    }
+		}
+		
+	}
