@@ -1,0 +1,1163 @@
+
+  
+//STACK IMPLEMENTATION
+//============================================
+
+package Ds;
+import java.util.*;
+class D2
+{
+    private int max=5;
+    private int top;
+    int arr[]=new int[max];
+    D2()
+    {
+        top=-1;
+    }
+    void push(int x)
+    {
+        if(top>=max-1)
+        {
+            System.out.println("stack overflow");
+        }else
+        {
+            arr[++top]=x;
+            System.out.println("pushed element is="+x+" "+top);
+        }
+    }
+        void pop()
+        {
+            if(top<0)
+            {
+                System.out.println("stack underflow");
+            }else
+            {
+                int p=arr[top--];
+                System.out.println("pop element is="+p+" "+top);
+            }
+        }
+        void peeck()
+        {
+            System.out.println("current position of top is="+top);
+        }
+}
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        D2 d=new D2();
+        int n;
+        do
+        {
+            System.out.println("1.push\n 2.pop\n 3.peek\n 0.Exit");
+            n=sc.nextInt();
+            switch(n)
+            {
+                case 1:
+                    System.out.println("Enter element");
+                    int x=sc.nextInt();
+                    d.push(x);
+                    break;
+                case 2:
+                    d.pop();
+                    break;
+                case 3:
+                    d.peeck();
+            }
+        }while(n!=0);
+        System.out.println("EXIT");
+    }
+}
+
+
+//================================================================
+//DOUBLY LINK LIST IMPLEMENTATION WITH ALL OPRERATIONS
+
+package Ds;
+import java.util.*;
+class Nodes
+{
+    Nodes backword;
+    int data;
+    Nodes forword;
+    Nodes(int data)
+    {
+        backword=null;
+        forword=null;
+        this.data=data;
+    }
+}
+class DoubleLinkList
+{
+    Nodes start;
+    int length;
+    DoubleLinkList()
+    {
+        start=null;
+        length=0;
+    }
+    void displayLength()
+    {
+        System.out.println("length="+length);
+    }
+    void displayForword()
+    {
+        Nodes n=start;
+        if(length==0)
+        {
+            System.out.println("Empty link list");
+        }
+        else
+        {
+        while(n.forword!=null)
+        {
+            System.out.println(n.data);
+            n=n.forword;
+        }
+        System.out.println(n.data);
+        }
+    }
+    //=======================================================================
+    void displayBackword()
+    {
+        Nodes n=start;
+        if(length==0)
+        {
+            System.out.println("Empty link list");
+        }
+        else
+        {
+            while(n.forword!=null)
+            {
+                n=n.forword;
+            }
+            while(n.backword!=null)
+            {
+                System.out.println(n.data);
+                n=n.backword;
+            }
+            System.out.println(n.data);
+        }
+    }
+    //========================================================================
+    void insertBeg(int data)
+    {
+        Nodes nd=new Nodes(data);
+        if(start==null)
+        {
+            start=nd;
+        }
+        else
+        {
+            start.backword=nd;
+            nd.forword=start;
+            start=nd;
+        }
+        length++;
+    }
+    //==========================================================================
+    void insertEnd(int data)
+    {
+        Nodes nd=new Nodes(data);
+        if(start==null)
+        {
+            start=nd;
+        }
+        else
+        {
+            Nodes n=start;
+            while(n.forword!=null)
+            {
+                n=n.forword;
+            }
+            n.forword=nd;
+            nd.backword=n;
+        }
+        length++;
+    }
+    //=========================================================================
+    void insertPos(int data,int pos)
+    {
+        Nodes nd=new Nodes(data);
+        if(pos==1)
+        {
+            insertBeg(data);
+        }
+        else
+        {
+            if(pos>length)
+            {
+                insertEnd(data);
+            }
+            else
+            {
+                int i=1;
+                Nodes n=start;
+                while(n.forword!=null)
+                {
+                    i++;
+                    if(i==pos)
+                    {
+                        break;
+                    }
+                    n=n.forword;   
+                }
+                nd.backword=n;
+                nd.forword=n.forword;
+                n.forword.backword=nd;
+                n.forword=nd;
+                length++;   
+            }
+        }
+    }
+    //=========================================================================
+    void deletBeg()
+    {
+        Nodes n=start;
+        if(start==null)
+        {
+            System.out.println("List is already empty");
+        }
+        else
+        {
+            if(length==1)
+            {
+                start=null;
+            }
+            else
+            {
+            start=n.forword;
+            start.backword=null;
+            }
+        }
+        length--;
+    }
+    //=========================================================================
+    void deletEnd()
+    {
+        Nodes n=start;
+        if(start==null)
+        {
+            System.out.println("List is already empty");
+        }
+        else
+        {
+            if(length==1)
+            {
+                start=null;
+            }
+            while(n.forword.forword!=null)
+            {
+                n=n.forword;
+            }
+            n.forword.backword=null;
+            n.forword=null;
+            length--;
+        }
+    }
+     //=======================================================================
+    void deletPos(int pos)
+    {
+        Nodes n=start;
+        if(pos<0)
+        {
+            System.out.println("position not valid");
+        }
+        else
+        {
+            if(pos==1)
+            {
+                deletBeg();
+            }
+            else
+            {
+                if(pos>=length)
+                {
+                    deletEnd();
+                }
+                else
+                {
+                     int i=1;
+                    while(n.forword!=null)
+                    {    
+                        i++;
+                        if(i==pos)
+                        {
+                            break;
+                        }
+                        n=n.forword;
+                    }
+                     n.forword.forword.backword=n;
+                    n.forword=n.forword.forword;
+                    
+                }
+                length--;
+                
+            }
+        }
+        
+    }
+}
+class Main5
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        DoubleLinkList dl=new DoubleLinkList();
+        int n;
+        do
+        {
+            System.out.println("1=insertBeg\n 2=insertEnd\n 3=displayforword\n 4=displaybackword\n 5=insertpos\n 6=displaylengthpos\n 7=deletbegining\n 8=deletend\n 9=deletpos\n   0=EXIT");
+            n=sc.nextInt();
+            switch(n)
+            {
+                case 1:
+                    int data=sc.nextInt();
+                    dl.insertBeg(data);
+                    break;
+                case 2:
+                    int d=sc.nextInt();
+                    dl.insertEnd(d);
+                    break;
+                case 3:
+                    System.out.println("display forword linklist");
+                    dl.displayForword();
+                    break;
+                case 4:
+                    System.out.println("display backword linklist");
+                    dl.displayBackword();
+                    break;
+                case 5:
+                    System.out.println("Enter element");
+                    int k=sc.nextInt();
+                    System.out.println("Enter position");
+                    int pos=sc.nextInt();
+                    dl.insertPos(k,pos);
+                    break;
+                case 6:
+                    dl.displayLength();
+                    break;
+                case 7:
+                    dl.deletBeg();
+                    break;
+                case 8:
+                    dl.deletEnd();
+                    break;
+                case 9:
+                    System.out.println("Enter position");
+                    int j=sc.nextInt();
+                    dl.deletPos(j);
+            }
+        }while(n!=0);
+        System.out.println("EXIT");
+    }
+}
+//====================================================
+
+//FACTORIAL PROGRAMME WITH RECURSION AND USING FOR LOOP
+
+class Fact
+{
+    static int fact(int n)
+    {
+        if(n==1)
+            return 1;
+        else{
+            return n*fact(n-1);
+        }
+    }
+}
+class M2
+{
+    public static void main(String args[])
+    {
+        int fact=1;
+        int n=20;
+        for(int i=1 ; i<=n ; i++)
+        {
+            fact=fact*i;
+        }
+        System.out.println(fact);
+        
+        Fact f=new Fact();
+        
+        int res=f.fact(n);
+        System.out.println(res);
+    }
+}
+
+//===================================================
+
+//SIGLE LINK LIST
+
+
+package Ds;
+class LinkList
+{
+    Node head;
+    static class Node
+    {
+        int data;
+        Node next;
+        Node(int d)
+        {
+            data=d;
+            next=null;
+        }
+    }
+    public void printList()
+    {
+        Node n=head;
+        while(n != null)
+        {
+            System.out.println(n.data);
+            //System.out.println(head.data);
+            n=n.next;
+        }
+    }
+    public static void main(String args[])
+    {
+        LinkList l1=new LinkList();
+        l1.head=new Node(10);
+        Node second=new Node(20);
+        Node third=new Node(20);
+        l1.head.next=second;
+        second.next=third;
+        l1.printList();
+    }
+
+}
+//======================================================
+
+//MAXIMUM NUMBER USING GENERIC
+
+import java.util.*;
+class D3 <T extends Comparable<T>>
+{
+    T n1;
+    T n2;
+    T n3;
+    D3(T n1,T n2,T n3)
+    {
+        this.n1=n1;
+        this.n2=n2;
+        this.n3=n3;
+    }
+    int fun()
+    {
+        if(n1.compareTo(n2)>0 && n1.compareTo(n3)>0)
+        {
+            return 1;
+        }else if(n2.compareTo(n1)>0 && n2.compareTo(n3)>0)
+        {
+            return 2;
+        }else{
+            return 3;
+        }
+    }
+}
+class D4
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+            int n1=sc.nextInt();
+            int n2=sc.nextInt();
+            int n3=sc.nextInt();
+            D3 <Integer> d=new D3 <Integer> (n1,n2,n3);
+            int x=d.fun();
+            if(x==1) 
+                System.out.println("max number is="+n1);
+            else if(x==2) System.out.println("max number is="+n2);
+            else System.out.println("max number is="+n3);
+            
+    }
+}
+//=======================================================
+
+//MERGE SORT
+
+package Ds;
+import java.util.*;
+import java.util.Arrays;
+
+class Mergesort
+{
+    void mergesort(int a[],int left,int right)
+    {
+        if(left<right)
+        {
+        int mid=(left+right)/2;
+        mergesort(a,left,mid);
+        mergesort(a,mid+1,right);
+        merge(a,left,mid,right);
+        }
+    }
+    void merge(int a[],int p,int q,int r)
+    {
+        int n1=q-p +1;
+        int n2=r-q;
+        
+        int L[]=new int[n1];
+        int M[]=new int[n2];
+        for(int i=0;i<n1;i++)
+        {
+            L[i]= a[p + i];
+        }
+        
+        for(int j=0; j<n2 ; j++)
+        {
+            M[j]=a[q + 1 + j];
+        }
+        
+        int i=0; 
+        int j=0;
+        int k=p;
+        while(i < n1 && j < n2)
+        {
+            if(L[i]<= M[j])
+            {
+                a[k]=L[i];
+                i++;
+            }
+            else
+            {
+                a[k]=M[j];
+                j++;
+            }
+            k++;
+        }
+        while(i < n1)
+        {
+            a[k++]=L[i++];
+        }
+        while(j<n2)
+        {
+            a[k++]=M[j++];
+        }
+        
+    }
+
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter size of array");
+        int n=sc.nextInt();
+        int a[]=new int[n];
+        for(int i=0 ; i<n ; i++)
+        {
+            a[i]=sc.nextInt();
+        }
+        System.out.println("display array before sort");
+        //for(int i=0 ; i<n ; i++)
+        //{
+          // System.out.print(a[i]);
+        //}
+        System.out.println(Arrays.toString(a));
+        Mergesort ob=new Mergesort();
+        ob.mergesort(a,0,a.length - 1);
+        System.out.println("display array after sort");
+        //for(int i=0; i<a.length; i++)
+        //{
+            //System.out.print(a[i]+" ");
+        //}
+        System.out.println(Arrays.toString(a));
+    }
+}
+//===================================================
+
+QUEUE IMPLEMENTATION
+
+
+package Ds;
+import java.util.*;
+class Queue
+{
+   // int capacity=5;
+    int size=0;
+    int front =-1;
+    int rear =-1;
+    int arr[]=new int[5];
+    void enque(int x)
+    {
+        if(size==5)
+        {
+            System.out.println("full");
+        }
+        else
+         if(front>=0 && rear==4 )
+        {
+           // front=-1;
+            rear=-1;
+            arr[++rear]=x;
+            size++;
+            System.out.println("push"+arr[rear]+"index="+rear);
+        }else   
+        {
+        arr[++rear]=x;
+        size++;
+        System.out.println("push"+arr[rear]+"index="+rear);
+        }
+        
+    }
+    void deque()
+    {
+        if(size==0)
+        {
+            System.out.println("empty");
+        }else
+        if(front==4)
+        {
+            front=-1;
+            front++;
+            System.out.println("pop"+arr[front]+"index="+front);
+            
+            size--;
+        }else    
+        {
+            front++;
+            System.out.println("pop"+arr[front]+"index="+front);
+            size--;
+        }
+    }
+    void status()
+    {
+        System.out.println("rearIndex="+rear+"  frontIndex="+front);
+        if(size==5)
+        {
+            System.out.println("queue is full");
+        }
+        if(size==0)
+        {
+            System.out.println("queue is empty");
+        }
+        if((size!=0) && (size!=5))
+        {
+            System.out.println("you can add value or remove value");
+        }
+    }
+}
+class Q1
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        Queue q=new Queue();
+        int n;
+        do
+        {
+            System.out.println("Enter your choice");
+            System.out.println("1=enque  2=deque  3=status  0=EXIT");
+            n=sc.nextInt();
+            switch(n)
+            {
+                case 1:
+                    int a=sc.nextInt();
+                    q.enque(a);
+                    break;
+                case 2:
+                    q.deque();
+                    break;
+                case 3:
+                    q.status();
+                    break;
+            }
+        }while(n!=0);
+        System.out.println("EXIT");
+      
+    }
+}
+		
+
+//====================================================
+
+//QUICK SORT
+
+package Ds;
+import java.util.*;
+import java.util.Arrays;
+class Quick
+{
+    int pivotation(int arr[],int first,int last)
+    {
+        int end=arr[last];
+        int i=first;
+        for(int j=first ; j < last ; j++)
+        {
+            if(arr[j] <= end)
+            {
+                
+                int temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+                i++;
+            }
+        }
+        int temp=arr[i];
+        arr[i]=arr[last];
+        arr[last]=temp;
+        return i;
+    }
+    void quicksort(int arr[],int first,int last)
+    {
+        if(first < last)
+        {
+            int pi = pivotation(arr,first,last);
+            quicksort(arr,first,pi-1);
+            quicksort(arr,pi+1,last);
+        }
+    }
+}
+class Main101
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter size of array");
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0 ; i<n ; i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        System.out.println("display array before sort");
+        System.out.println(Arrays.toString(arr));
+        Quick q=new Quick();
+        q.quicksort(arr, 0, n-1);
+        
+        System.out.println("display array before sort");
+        System.out.println(Arrays.toString(arr));
+        
+    }
+}
+//=====================================================
+
+//BINARY SEARCH TREE WITH ALL OPERATIONS
+
+package Ds;
+
+import java.util.Scanner;
+
+class Nodep
+{
+    int data;
+    Nodep left;
+    Nodep right;
+    Nodep(int data)
+    {
+        this.data=data;
+        left=null;
+        right=null;
+    }
+}
+class Bst
+{
+    Nodep root;
+    Bst()
+    {
+        root=null;
+    }
+    void displaypreordered(Nodep node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        else
+        {
+            System.out.println(node.data+" ");
+            displaypreordered(node.left);
+            displaypreordered(node.right);
+        }
+    }
+    void displaypostordered(Nodep node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        else
+        {
+            displaypostordered(node.left);
+            displaypostordered(node.right);
+            System.out.println(node.data);
+        }
+    }
+    //==================================================
+     void displayInordered(Nodep node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        displayInordered(node.left);
+        System.out.println(node.data+" ");
+        displayInordered(node.right);
+    }
+     //============================================
+    void insert(int data)
+    {
+        root=insert(root,data);
+    }
+    Nodep insert(Nodep node,int val)
+    {
+        if(node==null)
+        {
+            node=new Nodep(val);
+        }
+        else
+        {
+            if(val <= node.data)
+            {
+                node.left=insert(node.left,val);
+            }
+            else
+            {
+                node.right=insert(node.right,val);
+            }
+        }
+        return node;
+    }
+    void searchnode(int data)
+    {
+        int n=search(root,data);
+        if(n==1)
+        {
+            System.out.println("value not found");
+        }
+        else
+        {
+            System.out.println("value found");
+        }
+    }
+    int search(Nodep node,int val)
+    {
+        if(node==null)
+        {
+            return 1;
+        }
+        else
+        {
+            if(node.data==val)
+            {
+                return 2;
+            }
+            else
+            {
+                if(val < node.data)
+                {
+                    return search(node.left,val);
+                }
+                else
+                {
+                    return search(node.right,val);
+                }
+            }
+        }
+    }
+    //=====================================================================
+    void delet(int data)
+    {
+        if(root==null)
+        {
+            System.out.println("Tree in empty");
+        }
+        else
+        {
+            if(search(root,data)==2)
+            {
+                root=deletdata(root,data);
+            }
+            else
+            {
+                System.out.println("deleted element not present in tree");
+            }
+        }
+    }
+    Nodep deletdata(Nodep node,int data)
+    {
+        Nodep left,right,n;
+        if(node.data==data)
+        {
+            
+            left=node.left;
+            right=node.right;
+            if(left==null && right==null)
+            {
+                return null;
+            }
+            else
+            {
+                if(left==null)
+                {
+                    return right;
+                }
+                else
+                {
+                    if(right==null)
+                    {
+                        return left;
+                    }
+                    else
+                    {
+                        Nodep p2=right;
+                        Nodep p1=right;
+                        while(p1.left!=null)
+                        {
+                            p1=p1.left;
+                        }
+                        p1.left=left;
+                        return p2;
+                    }
+                }
+            }
+        }
+            if(data<root.data)
+            {
+                n=deletdata(root.left,data);
+                root.left=n;
+            }
+            else
+            {
+                n=deletdata(root.right,data);
+                root.right=n;
+            }
+        return root;
+    }
+}
+class Mainb
+{
+    public static void main(String args[])
+    {
+        
+        Scanner sc=new Scanner(System.in);
+        Bst b=new Bst();
+        int n;
+        do
+        {
+            System.out.println("1=insert\n2=displaypreordered\n3diplaypostordered\n4displayinordered\n5=search key\n6=delet element");
+            n=sc.nextInt();
+            switch(n)
+            {
+                case 1:
+                    System.out.println("Enter Element");
+                    int n1=sc.nextInt();
+                    b.insert(n1);
+                    break;
+                case 2:
+                    b.displaypreordered(b.root);
+                    break;
+                case 3:
+                    b.displaypostordered(b.root);
+                    break;
+                case 4:
+                    b.displayInordered(b.root);
+                    break;    
+                case 5:
+                    System.out.println("Enter the elment you want to search");
+                    int n2=sc.nextInt();
+                    b.searchnode(n2);
+                    break;
+                case 6:
+                    System.out.println("Enter element");
+                    int n3=sc.nextInt();
+                    b.delet(n3);
+            }
+        }while(n!=0);
+        System.out.println("EXIT");
+    }
+}
+//=======================================================
+
+//STACK APPLICATION
+//PARANTHESIS CHECKING
+
+package Ds;
+import java.util.*;
+class MyStack2
+{
+	private int max=5;
+	int top;
+	int[] stack=new int[max];
+	
+	public MyStack2()
+	{
+		top =-1;
+	}
+
+	void push(int x)
+	{
+		if(top>=max-1)
+		{
+			System.out.println("Stack overflow");
+			
+		}
+		else
+		{
+			top++;
+			stack[top]=x;
+		}
+	}
+	
+	void pop()
+	{
+		int item;
+		if(top<0)
+		{
+			System.out.println("STack underflow");
+			
+		}
+		else 
+		{
+			 item=stack[top];
+			 top--;
+		}
+	}
+	
+	boolean isEmpty()
+	{
+		if(top<0)
+		{
+			//System.out.println("Stack is empty");
+		     return true;
+		}
+		else
+		{
+			//System.out.println("Stack is not empty");
+	        return false;
+		}
+	}
+}
+	  
+class MyStack_Bracket
+{
+	//MyStack_Bracket[] mb=new MyStack_Bracket[];
+	String str;
+	MyStack2 s;
+        
+        
+
+	public MyStack_Bracket()
+	{
+            //this.str=str;
+            Scanner sc=new Scanner(System.in);
+            str=sc.next();
+		str="{{[]()}}";	
+		s=new MyStack2();
+	}
+	
+	public int checkmatch()
+	{
+		for(int i=0;i<str.length();i++)
+		{
+			if(str.charAt(i)=='{')
+			{
+				s.push(1);
+				
+			}
+			else if(str.charAt(i)=='}')
+			{
+				if(s.isEmpty())
+				{
+					System.out.println("false");
+				     return -1;
+				}
+				else
+				{
+					s.pop();
+					
+				}
+			}
+		}
+			if(s.isEmpty())
+			{
+				System.out.println("true");
+			    return 1;
+			}
+			else
+			{
+				System.out.println("false");
+			    return 0;
+			}
+			
+		}
+	}
+
+
+ class Stack_Bracket_11_Nov {
+
+	public static void main(String[] args)
+	{
+            Scanner sc=new Scanner(System.in);
+           // String str=sc.next();
+		MyStack_Bracket bracket=new MyStack_Bracket();
+	   bracket.checkmatch();
+	}
+
+}
+//======================================================
+
+Insert and Delete an Element from array.
+
+Program:
+
+public class Delete_Element 
+{
+	
+	void insert(int arr[],int element,int position)
+	{
+		int last=arr.length;
+		for(int i=arr.length-1;i>position-1;i--)
+		{
+			arr[i]=arr[i-1];
+		}
+		arr[position-1]=element;
+		System.out.println("Insert "+element+" at "+position+" Position : ");
+		for(int i=0;i<arr.length;i++)
+			System.out.print(arr[i]+" ");
+		System.out.print(last);
+		System.out.println();
+	}
+	
+	void delete(int []arr,int element)
+	{
+		System.out.println("Delete "+element +" From array : ");
+		for( int i=0; i< arr.length; i++ )
+		{
+			if ( element == arr[i] )
+			{
+				for(int j=i;j<arr.length-1;j++)
+				{
+					arr[j]=arr[j+1];
+				}
+				break;
+			}
+		}
+		for(int i=0;i<arr.length-1;i++)
+			System.out.print(arr[i]+" ");
+		System.out.println();
+		
+	}
+	
+		
+	
+
+	public static void main(String[] args)
+	 {
+	int []arr= {1,2,3,4,5,6,7,8};
+	Delete_Element op=new Delete_Element();
+		
+	op.insert(arr,12,3);
+	op.delete(arr, 5);
+	
+
+	}
+}
+
+//======================================================
+
+
+
+
+
