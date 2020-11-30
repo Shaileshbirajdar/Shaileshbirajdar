@@ -1,0 +1,333 @@
+
+//1)
+class Assgm2
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		for(int i=1 ; i<=10 ; i++)
+		{
+			System.out.println(num+" x "+i+" = "+(num*i));
+		}
+	}
+}*/
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$2.) Write a program to reverse a given number.$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+			
+/*
+//2)
+class Assgm2
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		int rev = 0;
+		for(int i=num ; i>0 ; i/=10)
+		{
+			int digit = i%10;
+			rev = rev*10 + digit;
+			
+		}
+		System.out.println(rev);
+	}
+}*/
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$3.) Program to check whether number is prime or not.$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//3)
+class Assgm2
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		int flag = 0;
+		for(int i=2 ; i<=num/2 ; i++)
+		{
+			if(num%2==0)
+			{
+				flag=1;
+				break;
+			}
+		}
+		if(flag==0)
+		{
+			System.out.println("Enter no is a prime number");
+		}
+		else
+		{
+			System.out.println("Enter no is not a prime number");
+		}
+	}
+}*/
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 4)Calculate  series : 12+22+32+42+.........+n2$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+/*
+
+//4)
+class Assgm2
+{
+	public static void main(String args[])
+	{
+		int ans=0;
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		for(int i=12 ; i<=n ; i=i+10)
+		{
+			System.out.println(i);
+			 ans=ans+i;
+		}
+		System.out.println("addition= "+ans);
+	}
+}*/
+
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$ 5)Print all prime numbers between two given numbers.$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//5)
+class Assgm2
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int num1 = sc.nextInt();
+		int num2 = sc.nextInt();
+		for(int i=num1 ; i<=num2 ; i++)
+		{
+			if(i==1 || i==0)
+			continue;
+			int flag=0;
+			for(int j=2 ; j<=i/2 ; j++)
+			{
+				if(i%j==0)
+				{
+					flag=1;
+					break;
+				}
+				
+			}
+			if(flag==0)
+			{
+				System.out.println(i);
+			}
+		}
+	}
+}*/
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 6) Program to show sum and average of 10 element array. Accept array elements from user.$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+/*
+//6)
+class Assg2
+{
+	public static void main(String args[])
+	{	
+		int sum=0;
+		double avg;
+		Scanner sc = new Scanner(System.in);
+		int arr[] = new int[10];
+		for(int i=0 ; i< 10 ; i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		for(int i=0 ; i<arr.length ; i++)
+		{
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+		for(int i=0 ; i<arr.length ; i++)
+		{
+			sum=sum+arr[i];
+		}
+		System.out.println(sum);
+		avg = sum/10;
+		System.out.println("avg= "+avg);
+		
+		
+	}
+}*/
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 7) Sort a ten element array in descending order.$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//7)
+class Assgm2
+{
+	public static void main(String args[])
+	{	
+		int temp=0;
+		Scanner sc = new Scanner(System.in);
+		int arr[] = new int[10];
+		for(int i=0 ; i< 10 ; i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		System.out.println("array before swap");
+		for(int i=0 ; i<arr.length ; i++)
+		{
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+		
+		for(int i=0 ; i<9 ; i++)
+		{
+			for(int j=i+1 ; j<=9 ; j++ )
+			{
+			if(arr[i]>arr[j])
+			{
+				temp=arr[i];
+				arr[i]=arr[j];
+				arr[j]=temp;
+			}
+			}
+		}
+		System.out.println("array after swap");
+		for(int i=0 ; i<arr.length ; i++)
+		{
+			System.out.print(arr[i]+" ");
+		}
+	}
+}*/
+
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 8) Write a program to reverse the array elements.$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//8)
+class Assgm2
+{
+	public static void main(String args[])
+	{	
+		
+		Scanner sc = new Scanner(System.in);
+		int arr[] = new int[10];
+		for(int i=0 ; i< 10 ; i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		for(int i=0 ; i<arr.length ; i++)
+		{
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+		for(int i=(arr.length-1) ; i>=0 ; i--)
+		{
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+	}
+}*/
+
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 9)Write a program to search an element in the array.$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//9)
+class Assg2
+{
+	public static void main(String args[])
+	{	
+		
+		Scanner sc = new Scanner(System.in);
+		int arr[] = new int[10];
+		for(int i=0 ; i< 10 ; i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		for(int i=0 ; i<arr.length ; i++)
+		{
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+		System.out.println("Enter the element you want to search");
+		int ele = sc.nextInt();
+		for(int i=0 ; i<arr.length ; i++)
+		{
+			if(arr[i]==ele){
+			System.out.print("element match at the index of= "+i);
+			System.out.println();
+			}
+			else{
+				continue;
+			}
+		}
+	}	
+}*/
+
+
+
+//$$$$$$$$$$$$$$$$$Write the program to find the sum of even elements and sum of odd elements present in the array of integer type.$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+/*
+//10)
+class Assgm2
+{
+	public static void main(String args[])
+	{	
+		int sum1=0;
+		int sum2=0;
+		Scanner sc = new Scanner(System.in);
+		int arr[] = new int[10];
+		for(int i=0 ; i< 10 ; i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		for(int i=0 ; i<arr.length ; i++)
+		{
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+		for(int i=0 ; i<arr.length ; i++)
+		{
+			if((arr[i]%2)==0)
+			{
+				sum1 = sum1+arr[i];
+			}
+			else
+			{
+				sum2 = sum2+arr[i];
+			}
+		}
+		System.out.println("sum of even numbers= "+sum1);
+		System.out.println("sum of odd numbers= "+sum2);
+	}
+}*/
+
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+/*
+//3)
+class Assg2
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		int flag = 0;
+		for(int i=2 ; i<=num/2 ; i++)
+		{
+			if(num%2==0)
+			{
+				flag=1;
+				break;
+			}
+		}
+		if(flag==0)
+		{
+			System.out.println("Enter no is a prime number");
+		}
+		else
+		{
+			System.out.println("Enter no is not a prime number");
+		}
+	}
+}*/
+
+
