@@ -1,0 +1,149 @@
+1)WAP to find factorial of number using iteration and recursion.
+
+=> Using Iteration
+Program :
+public class Factorial {
+	public static void main(String[] args) {
+		int n=5;
+		int fact=1;
+		for(int i=1;i<n;i++)
+			fact=fact*i;
+		System.out.println(fact);
+	}
+}
+
+
+Using Recursion
+Program :
+
+public class Factorial {
+	int fact(int n)
+	{
+		if(n==0)
+			return 1;
+		else
+			return (n*fact(n-1));
+		
+	}
+	public static void main(String[] args) {
+		{
+		
+			Factorial f=new Factorial();
+			System.out.println(f.fact(5));
+		}
+	}
+}
+
+
+
+------------------------------------------------------------------------------------
+
+
+2) WAP to print Fibonacci series using iteration and recursion.
+
+Using iteration
+Program:
+
+public class Fibonacci {
+
+	public static void main(String[] args) {
+		 int n1=0,n2=1,n3;    
+		 System.out.print(n1+" "+n2);   
+		    
+		 for(int i=2;i<10;++i)    
+		 {    
+		  n3=n1+n2;    
+		  System.out.print(" "+n3);    
+		  n1=n2;    
+		  n2=n3;    
+		 } 
+
+	}
+
+}
+
+
+Using Recursion
+Program: 
+
+public class Fibonacci
+{
+			int fib(int n) 
+		    { 
+			    if (n <= 1) 
+			       return n; 
+			    return fib(n-1) + fib(n-2); 
+		    } 
+		    public static void main(String args[]) 
+		    { 
+				    int n = 9; 
+				    Fibonacci f=new Fibonacci();
+				    System.out.println(f.fib(n)); 
+		    } 
+}
+
+
+---------------------------------------------------------------------------------------
+
+
+3) WAP to find sum of n  number using iteration and recursion.
+
+Using iteration:
+Program:
+
+public class SumOfNumber {
+	int add(int n)
+		{
+		int sum=0;
+		if(n<=0)
+			return 0;
+		else
+			return  n + add(n-1);
+		}
+	
+		public static void main(String[] args) {
+			SumOfNumber s=new SumOfNumber();
+			int n=5,sum=0;
+			for(int i=1;i<=n;i++)
+				sum=sum+i;
+			System.out.println(sum);		//Using Iteration 
+			System.out.println(s.add(5));		//Using Recursion
+		}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	public class Generics{
+	public static <E> void largest(double a,double b,double c)
+	{
+		if( a >= b && a >= c)
+	          System.out.println(a+" is the largest Number");
+	
+	      else if (b >= a && b >= c)
+	          System.out.println(b+" is the largest Number");
+	
+	      else
+	          System.out.println(c+" is the largest Number");
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		largest(1,2,3);
+		largest(1.1,2.2,3.3);
+		largest(1.222222,3.44444444,3.4444444444);
+	}
+}
