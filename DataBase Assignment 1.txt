@@ -1,0 +1,55 @@
+--------------------------------------------------------------Assignment 1 Database-------------------------------------------------
+create database Assignment;
+use Assignment;
+CREATE TABLE Members(
+Members_Id int(5) primary key,
+Members_name varchar(30),
+Members_address varchar(50),
+Acc_open_Date Date,
+Membership_type varchar(20)
+);
+
+drop table Members;
+
+CREATE TABLE Book(
+Book_No int(6),
+Book_Name varchar(30),
+Author_Name varchar(30),
+cost int(7),
+Category char(10)
+);
+CREATE TABLE Issue(
+Lib_Issue_Id int(10),
+Book_No int(6),
+Member_Id int(6),
+Issue_Date date,
+Return_Date date
+);
+desc Members;
+desc Book;
+desc Issue;
+
+ALTER TABLE Members drop COLUMN Penalty_Account;
+INSERT INTO Members VALUES (1,'Richa Sharma','pune','2012-11-05','Lifetime');
+INSERT INTO Members VALUES (2,'Garishma Sen','pune',CURRENT_DATE(),'Lifetime');
+INSERT INTO Members VALUES (3,'Rina saxena','Nasik','2005-11-12','Lifetime');
+INSERT INTO Members VALUES (4,'Rahul Gandhi','pune',CURRENT_DATE(),'Lifetime');
+INSERT INTO Members VALUES (5,'Raj Patil','Pune','2010-02-12','Lifetime');
+
+
+select * from Members;
+
+INSERT INTO Book values(101,'let us c','dennis ritchie','100','system');
+INSERT INTO Book values(102,'oracle','Leni','558','custom');
+INSERT INTO Book values(103,'java','balaguruswamy','330','custom');
+INSERT INTO Book values(104,'PL sql','ref','200','database');
+
+select * from Book;
+
+INSERT INTO Issue values(100,'20','15','2006-12-5','2007-11-7');
+INSERT INTO Issue values(101,'21','16','2008-11-9','2010-10-2');
+INSERT INTO Issue values(103,'22','17','2010-2-3','2011-11-4');
+
+select * from Issue;
+update Book set Book_Name='java' where Book_No=102;
+
