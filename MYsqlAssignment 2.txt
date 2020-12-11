@@ -1,0 +1,150 @@
+create table publishers (pubid int primary key,panme varchar(30),email varchar(50) unique,phone varchar(30)  );
+create table subjects (subid varchar(5) primary key,sname varchar(30));
+create table authors (autid int primary key,aname varchar(30),email varchar(50),phone varchar(30) );
+create table titles (titleid int primary key,title varchar(10),pubid int(3), subid varchar(5),pubdate date,cover char(1)  check(cover in('p','h','P','H')),price int(4),
+ constraint title_pbid_fk foreign key (pubid) references publishers(pubid),
+ constraint title_subid_fk foreign key(subid) references subjects(subid));
+ 
+ create table titleauthors (titleid int(5),autid int(5),importance int(2),
+ constraint titleauthor_titleid_fk foreign key (titleid) references titles(titleid),
+ constraint titleauthor_authorid_fk foreign key(autid) references authors (autid));
+ CREATE TABLE  SUBJECTS_BACKUP(SUBID VARCHAR(5) PRIMARY KEY,SNAME  VARCHAR(30));
+ insert into subjects values('ORA','oracle database 10g'),('java','java language'),('jee','java enterprice edition'),('vb','visual basic.net'),('asp','asp.net');
+  INSERT INTO PUBLISHERS VALUES (1,'WILLEY','WDT@VSNL.NET','91-11-23260877');
+ INSERT INTO PUBLISHERS VALUES (2,'WROX','INFO@WROX.COM',NULL);
+INSERT INTO PUBLISHERS VALUES (3,'TATA MCGRAW-HILL','FEEDBACK@TATAMCGRAWHILL.COM','91-11-33333322');
+ INSERT INTO PUBLISHERS VALUES (4,'TECHMEDIA','BOOKS@TECHMEDIA.COM','91-11-33257660');
+ 
+ INSERT INTO AUTHORS VALUES (101, 'HERBERT SCHILD','HERBERT@YAHOO.COM',NULL);
+ INSERT INTO AUTHORS VALUES (102, 'JAMES GOODWILL','GOODWILL@HOTMAIL.COM',NULL);
+INSERT INTO AUTHORS VALUES (103, 'DAVAID HUNTER','HUNTER@HOTMAIL.COM',NULL);
+INSERT INTO AUTHORS VALUES (104, 'STEPHEN WALTHER','WALTHER@GMAIL.COM',NULL);
+INSERT INTO AUTHORS VALUES (105, 'KEVIN LONEY','LONEY@ORACLE.COM',NULL);
+INSERT INTO AUTHORS VALUES (106, 'ED. ROMANS','ROMANS@THESERVERSIDE.COM',NULL);
+
+alter table titles modify title varchar(50);
+
+ INSERT INTO TITLES VALUES (1001,'ASP.NET UNLEASHED',4,'ASP','2002-12-20','P',540);
+ INSERT INTO TITLES VALUES (1002,'ORACLE10G COMP. REF.',3,'ORA','2005-05-01','P',575);
+ INSERT INTO TITLES VALUES (1003,'MASTERING EJB',1,'JEE','2005-02-03','P',475);
+ INSERT INTO TITLES VALUES (1004,'JAVA COMP. REF',3,'JAVA','2005-03-04','P',499);
+ INSERT INTO TITLES VALUES (1005,'PRO. VB.NET',2,'VB','2005-06-15','P',450);
+
+
+
+ INSERT INTO TITLEAUTHORS VALUES (1001,104,1);
+ INSERT INTO TITLEAUTHORS VALUES (1002,105,1);
+
+ INSERT INTO TITLEAUTHORS VALUES (1003,106,1);
+
+INSERT INTO TITLEAUTHORS VALUES (1004,101,1);
+
+INSERT INTO TITLEAUTHORS VALUES (1005,103,1);
+ INSERT INTO TITLEAUTHORS VALUES (1005,102,2);
+ 
+ -- listing --
+select panme ,phone,email from publishers;
+select aname,phone from authors;
+select titleid,title,pubdate from titles;
+select autid,titleid,importance from titleauthors;
+
+-- Like opeartor--
+select * from subjects where sname like 'oracle%';
+select sname from subjects where sname like 'j%';
+select sname from subjects where sname like '%.net%';
+select aname from authors where aname like '%er';
+select *from publishers where panme like '%hill%';
+
+
+-- relational operator--
+select * from titles where price<500;
+select * from subjects where subid='java' or subid='jee';
+select aname from authors where autid>103;
+select * from titles where titleid=1001 or price>400;
+
+-- IN Operator --
+select * from publishers where panme in('TECHMEDIA','WROX');
+
+-- aggregate function --
+select max(price) from titles;
+select avg(importance) from titleauthors;
+select count(autid) from authors;
+select*from authors;
+select sum(price) from titles;
+
+-- date --
+select year(sysdate());
+select date(sysdate());
+select day(sysdate());
+select month(sysdate());
+-- select last_day(pubdate from titles where subid='java');
+
+-- DML --
+create table employee (empid int,empname varchar(50));
+insert into employee values (1,'prabhanshu'),(2,'raju'),(3,'rahul');
+alter table employee add column dept_id int;
+select*from employee;
+alter table employee modify empname char(50);
+desc employee;
+alter table employee modify empname varchar(50);
+update employee set empname='scott' ;
+truncate table employee;
+alter table employee add column sal float(7,3);
+insert into employee (sal) values (1234.567),(1234.567),(1652.786),(1775.156);
+
+-- perform operations --
+select round(sal) from employee;
+-- select trunc(sal) from employee where empid=1;
+select ceil(sal) from employee;
+select floor(sal) from employee;
+-- select sign(-15) from dual;
+select sign(sal) from employee;
+select mod(5,2) from dual;
+select sqrt(36) from dual;
+select power(2,2) from dual;
+
+-- string operations --
+select ascii(empname) from employee;
+select char_length(empname) from employee;
+select concat("shailesh ","birajdar");
+select concat_ws("-","shailesh","birajdar");
+-- SELECT FIELD("q", "s", "q", "l");
+select date_format(pubdate,"%d %M %y") from titles;
+select upper(empname) from employee;
+select ucase(empname) from employee;
+select trim("  pratuim lskl jd ") from dual; -- remove leading and trailing spaces 
+SELECT SUBSTRING_INDEX("www.w3schools.com", ".", 1);
+select substring("shaileshbirajdar",2,6);
+select substr("shaileshbirajdar",2,6);
+select strcmp("jratu","padha");
+select strcmp("padha","padha");
+select rtrim("   pratuim lskl jd ...           ")from dual; -- remove trailing spaces
+select ltrim("   pratuim lskl jd ");
+select reverse("shailesh")from dual;
+select lpad("pratu",20,"kaa");
+SELECT MID("SQL Tutorial", 5, 3) AS ExtractString;
+select repeat("pra",3);
+select length("pra");
+SELECT FORMAT(250500.5634, 2);
+select lower("shailesh");
+
+-- add function 
+select adddate("2020-12-25" , interval 10 day);
+select addtime("2017-06-15 09:34:21", "55");
+SELECT CURDATE();
+SELECT CURRENT_TIME();
+select current_timestamp();
+select datediff("2020-06-15" ,"2020-06-12");
+select date_format("2020-06-15","%y");
+select date_format("2020-06-15","%Y");
+select day("2020-12-23");
+select dayname("2020-12-23");
+select dayofmonth("2020-12-23");
+select dayofweek("2020-12-23");
+select extract(month from "2020-12-23");
+
+
+
+
+
+
