@@ -1,0 +1,99 @@
+Employee.java
+
+package in.edac.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Employee {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String department;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+}
+
+Student.java 
+package in.edac.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Student {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String name;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+}
+
+HelloHibernate.java 
+package in.edac;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import in.edac.entity.Employee;
+import in.edac.entity.Student;
+
+public class HelloHibernate {
+	public static final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+
+	public static void main(String[] args) {
+		Session session = sessionFactory.openSession();
+		// Transaction tx = session.beginTransaction();
+		session.beginTransaction();
+
+		Student std = new Student();
+		std.setName("rakesh");
+		session.save(std);
+
+		Employee e = new Employee();
+		e.setDepartment("cse");
+		session.save(e);
+
+		// tx.commit();
+		session.getTransaction().commit();
+		session.close();
+	}
+}
+
