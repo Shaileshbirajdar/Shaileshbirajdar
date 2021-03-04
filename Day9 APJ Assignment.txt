@@ -1,0 +1,103 @@
+error.jsp
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>ERROR PAGE</h1>
+
+</body>
+</html>
+
+
+
+index.jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+Hello World.
+Mic Testing!!!
+
+</body>
+</html>
+
+
+
+success.jsp
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>SUCCESS</h1>
+</body>
+</html>
+
+user-list.jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+    
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>USER Add</h1>
+
+<form action="user-create" method="post">
+	<div>
+		<input type="text" name="username" placeholder="Enter Username...">
+	</div>
+	
+	<div>
+		<input type="password" name="password" placeholder="Enter Password...">
+	</div>
+	
+	<div>
+		<input type="text" name="email" placeholder="Enter Email...">
+	</div>
+	
+	<div>
+		<input type="text" name="mobile" placeholder="Enter Mobile">
+	</div>
+	
+	<div>
+		<input type="Submit" value="Add User">
+	</div>
+</form>
+
+
+<h1>USER LIST</h1>
+<c:forEach var="item" items="${userList}">
+	<div>
+		${item.username} ${item.email} ${item.mobile} <a href="user-delete?id=${item.id}">DEL</a> 
+	</div>
+</c:forEach>
+
+
+</body>
+</html>
